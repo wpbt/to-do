@@ -5,6 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## How to run the project in your local environment?
 
 Step 1: `git clone https://github.com/wpbt/to-do.git`
+
 Step 2: `cd to-do`
+
 Step 3: `npm install`
+
 Step 4: `npm start`
