@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-import App from './app';
+import App from './App';
 
 const root = ReactDOM.createRoot( document.getElementById( 'to-do' ) );
 
