@@ -1,0 +1,12 @@
+button.btn-disabled:disabled {
+  cursor: not-allowed !important;
+  pointer-events: all !important;
+}
+
+span.delete-badge {
+  cursor: pointer;
+}
+
+.center-col {
+  margin: 0 auto;
+}

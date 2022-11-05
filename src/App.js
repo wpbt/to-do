@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import ToDo from './components/todo';
+import ToDoList from './components/toDoList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { getTasks } from './services/fakeTasks';
+
+
+function App(props){
+
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        const initial_tasks = [...getTasks()];
+        setTasks(initial_tasks);
+    }, []);
+
+    function handleDelete(task) {
+        const new_tasks = tasks.filter( t => t._id !== task._id );
+        setTasks(new_tasks);
+    };
+
+    function handleAdd(task) {
+        const new_tasks = [ task, ...tasks ];
+        setTasks(new_tasks);
+    };
+
+    function handleCheck(task) {
+        const new_tasks         = [...tasks];
+        const task_index        = tasks.indexOf( task );
+        const new_task          = {...new_tasks[task_index]};
+        new_task.complete       = !task.complete;
+        new_tasks[task_index]   = new_task;
+
+        setTasks(new_tasks);
+    };
+
+    return (
+        <>
+            <ToDo
+                onAdd = {handleAdd}
+            />
+            <ToDoList
+                data        = {tasks}
+                onDelete    = {handleDelete}
+                onCheck     = {handleCheck}
+            />
+        </>
+    );
+    
 }
-
 export default App;
