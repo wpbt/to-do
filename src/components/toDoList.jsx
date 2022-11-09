@@ -9,8 +9,8 @@ const ToDoList = ({ data, onCheck, onDelete }) => {
     return (
         <div className="list-group col-6 center-col">
             {data.map(d => (
-                <React.Fragment key={d._id}>
-                    <li className="list-group-item">
+                <React.Fragment>
+                    <li className="list-group-item" key={d._id}>
                         <span>
                             <Checkbox
                                 value           = {d.complete}
